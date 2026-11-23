@@ -1,0 +1,5 @@
+*.py 
+dashboard_garitas.png 
+memoria_sistema/hist_*.jpg 
+memoria_sistema/estado_memoria.json 
+capturas_50/ 

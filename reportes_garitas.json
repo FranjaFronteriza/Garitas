@@ -1,0 +1,83 @@
+{
+  "reportes": [
+    {
+      "garita": "Garita Centro (Av. Colón)",
+      "carril": "Normal / Ready Lane",
+      "tiempo_estimado": "~20 - 30 min",
+      "hora_referencia": "Hace 15 min",
+      "nivel": "verde",
+      "resumen": "Flujo ágil con fila corta a la altura del correo/Canal 66; 9 casetas operando de madrugada.",
+      "foto_nueva": true,
+      "imagen_indice": 2,
+      "etiqueta_tiempo": "Hace 28 min",
+      "box_2d": [
+        161,
+        24,
+        549,
+        605
+      ],
+      "ultima_etiqueta_foto": "Hace 28 min"
+    },
+    {
+      "garita": "Garita Centro (Pueblo Nuevo)",
+      "carril": "Normal / Ready Lane",
+      "tiempo_estimado": "~25 - 35 min",
+      "hora_referencia": "Hace 35 min",
+      "nivel": "verde",
+      "resumen": "Fila fluida iniciando en la subida/rampa del puente con tiempos de cruce reportados en 35 minutos.",
+      "foto_nueva": true,
+      "imagen_indice": 5,
+      "etiqueta_tiempo": "Hace 36 min",
+      "box_2d": [
+        206,
+        26,
+        878,
+        605
+      ],
+      "ultima_etiqueta_foto": "Hace 36 min"
+    },
+    {
+      "garita": "Garita Nuevo Mexicali",
+      "carril": "Normal / Ready Lane / SENTRI",
+      "tiempo_estimado": "Cerrada",
+      "hora_referencia": "Hace 3 h",
+      "nivel": "verde",
+      "resumen": "Garita cerrada por horario nocturno (opera de 6:00 AM a 9:00/9:30 PM). Todo el tráfico canalizado al Centro.",
+      "foto_nueva": false,
+      "imagen_indice": null,
+      "etiqueta_tiempo": null,
+      "box_2d": null
+    },
+    {
+      "garita": "Cruce Peatonal",
+      "carril": "Peatonal",
+      "tiempo_estimado": "~0 - 5 min",
+      "hora_referencia": "Hace 30 min",
+      "nivel": "verde",
+      "resumen": "Túnel y andadores completamente vacíos sin espera para ingresar a las instalaciones de CBP.",
+      "foto_nueva": true,
+      "imagen_indice": 9,
+      "etiqueta_tiempo": "Hace 1 h",
+      "box_2d": [
+        109,
+        25,
+        651,
+        605
+      ],
+      "ultima_etiqueta_foto": "Hace 1 h"
+    },
+    {
+      "garita": "Permisos (I-94)",
+      "carril": "Permisos",
+      "tiempo_estimado": "~10 - 15 min",
+      "hora_referencia": "Hace 3 h",
+      "nivel": "verde",
+      "resumen": "Atención rápida en oficina de permisos sin aglomeraciones de madrugada; trámite ágil si ya está pre-pagado.",
+      "foto_nueva": false,
+      "imagen_indice": null,
+      "etiqueta_tiempo": null,
+      "box_2d": null
+    }
+  ],
+  "actualizado": "01:53 AM"
+}

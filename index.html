@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte de Garitas • Mexicali</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --verde: #22c55e;
+      --amarillo: #eab308;
+      --rojo: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 28px 20px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      background: var(--verde);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--verde);
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .btn-refresh {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-refresh:hover { border-color: var(--accent); color: var(--accent); }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr 290px;
+      gap: 22px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 8px;
+      background: var(--amarillo);
+    }
+
+    .card.verde::before { background: var(--verde); }
+    .card.amarillo::before { background: var(--amarillo); }
+    .card.rojo::before { background: var(--rojo); }
+
+    .card-header {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-header span {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .card-time {
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .verde .card-time { color: var(--verde); }
+    .amarillo .card-time { color: var(--amarillo); }
+    .rojo .card-time { color: var(--rojo); }
+
+    .card-time small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .photo-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .photo-box img {
+      width: 100%;
+      height: 135px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+    }
+
+    .photo-tag {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .no-photo {
+      height: 145px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .modal.open { display: flex; }
+    .modal img { max-width: 100%; max-height: 90vh; border-radius: 12px; border: 1px solid var(--border); }
+
+    @media (max-width: 768px) {
+      .card { grid-template-columns: 1fr; }
+      .photo-box img { height: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>REPORTE INTEGRAL DE GARITAS Y PERMISOS • MEXICALI</h1>
+      <div class="status-bar">
+        <div class="pulse"></div>
+        <span id="last-update">Cargando reporte...</span>
+      </div>
+    </div>
+    <button class="btn-refresh" onclick="cargarDatos()">↻ Actualizar datos</button>
+  </header>
+
+  <main class="grid" id="cards-container"></main>
+
+  <div class="modal" id="img-modal" onclick="this.classList.remove('open')">
+    <img id="modal-img" src="" alt="Evidencia Garita" />
+  </div>
+
+  <script>
+    function slugify(texto) {
+      return texto.replace(/[^a-zA-Z0-9]/g, '').slice(0, 20);
+    }
+
+    function abrirFoto(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('img-modal').classList.add('open');
+    }
+
+    async function cargarDatos() {
+      try {
+        const res = await fetch(`reportes_garitas.json?t=${Date.now()}`);
+        const data = await res.json();
+
+        document.getElementById('last-update').textContent =
+          `Monitoreo Activo • Actualizado: ${data.actualizado || 'Reciente'}`;
+
+        const container = document.getElementById('cards-container');
+        container.innerHTML = '';
+
+        (data.reportes || []).forEach((rep, idx) => {
+          const nivel = (rep.nivel || 'amarillo').toLowerCase();
+          const slug = slugify(rep.garita || `g${idx}`);
+          const rutaFoto = `memoria_sistema/evidencia_${slug}.jpg?t=${Date.now()}`;
+          const etiquetaFoto = rep.ultima_etiqueta_foto || rep.etiqueta_tiempo || 'Evidencia';
+
+          const card = document.createElement('article');
+          card.className = `card ${nivel}`;
+          card.innerHTML = `
+            <div>
+              <div class="card-header">${rep.garita} <span>• ${rep.carril || 'General'}</span></div>
+              <div class="card-time">${rep.tiempo_estimado} <small>(${rep.hora_referencia || ''})</small></div>
+              <p class="card-desc">${rep.resumen}</p>
+            </div>
+            <div class="photo-box">
+              <img src="${rutaFoto}" alt="${rep.garita}" onclick="abrirFoto(this.src)"
+                   onerror="this.parentElement.innerHTML='<div class=\\'no-photo\\'>Sin foto registrada</div>'">
+              <span class="photo-tag">📸 ${etiquetaFoto}</span>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        document.getElementById('last-update').textContent = 'No se encontró reportes_garitas.json en esta carpeta.';
+      }
+    }
+
+    cargarDatos();
+    setInterval(cargarDatos, 30000);
+  </script>
+</body>
+</html>
