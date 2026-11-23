@@ -1,16 +1,36 @@
 {
   "reportes": {
     "Garita Centro Av. Colón": {
-      "tiempo_estimado": "30 min",
-      "estado": "moderado",
-      "resumen": "Fila ubicada a la altura de Telcel antes de Plaza París, con flujo continuo.",
-      "hace_cuanto": "Hace 2 min"
+      "tiempo_estimado": "20 - 30 min",
+      "estado": "fluido",
+      "resumen": "Fila sobre Av. Colón a la altura de Telcel antes de Plaza París, avanzando rápido y fluido de madrugada.",
+      "hace_cuanto": "Hace 14 min",
+      "tiene_foto": true,
+      "indice_captura": 2,
+      "caja_foto": [
+        358,
+        281,
+        924,
+        548
+      ],
+      "fecha_foto": "02:46 AM",
+      "foto_url": "memoria_sistema/evidencia_GaritaCentroAvColon.jpg"
     },
     "Garita Centro Pueblo Nuevo": {
-      "tiempo_estimado": "35 min",
-      "estado": "moderado",
-      "resumen": "Fila en el área de la subida del puente; usuarios reportan avance regular con tiempos de espera cercanos a 35 minutos.",
-      "hace_cuanto": "Hace 1 hr"
+      "tiempo_estimado": "15 - 30 min",
+      "estado": "fluido",
+      "resumen": "Fila en el puente/distribuidor de acceso a Pueblo Nuevo, avanzando con tráfico continuo (reportan 15 min desde Canal 66).",
+      "hace_cuanto": "Hace 1 hora",
+      "tiene_foto": true,
+      "indice_captura": 10,
+      "caja_foto": [
+        177,
+        281,
+        569,
+        548
+      ],
+      "fecha_foto": "02:46 AM",
+      "foto_url": "memoria_sistema/evidencia_GaritaCentroPuebloNuevo.jpg"
     },
     "Garita Nuevo Mexicali": {
       "tiempo_estimado": "Sin reporte",
@@ -21,15 +41,26 @@
     "Cruce Peatonal": {
       "tiempo_estimado": "Fluido (0 - 5 min)",
       "estado": "fluido",
-      "resumen": "Reportan cruce completamente despejado y sin fila peatonal.",
-      "hace_cuanto": "Hace 35 min"
+      "resumen": "Sin fila para cruzar caminando (reportan 0 personas / despejado de madrugada).",
+      "hace_cuanto": "Hace 42 min",
+      "tiene_foto": true,
+      "indice_captura": 1,
+      "caja_foto": [
+        203,
+        281,
+        827,
+        548
+      ],
+      "fecha_foto": "02:46 AM",
+      "foto_url": "memoria_sistema/evidencia_CrucePeatonal.jpg"
     },
     "Permisos I-94": {
       "tiempo_estimado": "Sin reporte",
       "estado": "moderado",
       "resumen": "Esperando reporte reciente de usuarios.",
-      "hace_cuanto": "--"
+      "hace_cuanto": "--",
+      "foto_url": "memoria_sistema/evidencia_PermisosI94.jpg"
     }
   },
-  "ultima_actualizacion": "23/11/2026 02:37 AM"
+  "ultima_actualizacion": "23/11/2026 02:46 AM"
 }
